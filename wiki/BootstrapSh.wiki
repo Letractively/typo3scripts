@@ -1,0 +1,37 @@
+#summary bootstrap.sh - Creating a new Typo3 installation from scratch.
+
+= Introduction =
+{{{
+$ ./bootstrap.sh --help
+  Usage: ./bootstrap.sh [OPTIONS --version=<VERSION>]|<VERSION>
+
+  Core:
+  --help              Display this help and exit.
+  --update            Tries to update the script to the latest version.
+  --base=PATH         The name of the base path where Typo3 should be
+                      installed. If no base is supplied, "typo3" is used.
+
+  Options:
+  --version=VERSION   The version to install.
+
+  Database:
+  --hostname=HOST     The name of the host where the Typo3 database is running.
+  --username=USER     The username to use when connecting to the Typo3
+                      database.
+  --password=PASSWORD The password to use when connecting to the Typo3
+                      database.
+  --database=DB       The name of the database in which Typo3 is stored.
+
+  Note: When using an external configuration file, it is sufficient to supply
+        just the target version as a parameter.
+        When supplying other any command line argument, supply the target
+        version through the --version command line parameter.
+}}}
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
