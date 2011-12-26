@@ -1,6 +1,10 @@
 #summary bootstrap.sh - Creating a new Typo3 installation from scratch.
 
 = Introduction =
+
+The main purpose of `bootstrap.sh` is to ease deployment of a new Typo3 installation. At the time of writing, the easing is limited mostly to downloading the Typo3 package for you.
+
+= Arguments =
 {{{
 $ ./bootstrap.sh --help
   Usage: ./bootstrap.sh [OPTIONS --version=<VERSION>]|<VERSION>
@@ -27,3 +31,31 @@ $ ./bootstrap.sh --help
         When supplying other any command line argument, supply the target
         version through the --version command line parameter.
 }}}
+
+Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
+So for `bootstrap.sh` the proper configuration file would be `bootstrap.conf`.
+The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
+
+The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
+
+= Examples =
+
+== Creating a fresh installation ==
+{{{
+/var/www$ mkdir t3site
+/var/www$ cd t3site/
+/var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/bootstrap.sh
+/var/www/t3site$ chmod 700 bootstrap.sh
+/var/www/t3site$ ./bootstrap.sh 4.6.0
+Looking for Typo3 package at blankpackage-4.6.0.tar.gz...NOT found!
+Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.0.tar.gz...Done.
+Extracting Typo3 package blankpackage-4.6.0.tar.gz...Done.
+Moving Typo3 package to typo3...Done.
+Generating localconf.php...Done.
+}}}
+Creating a new installation is straight-forward. You simply retrieve the script, make it executable and pass the Typo3 version you want to use as an argument.
+
+By default, the installation will be created in a subfolder called `typo3`. This is due to the way the other scripts interact with a Typo3 installation. You can change the name of that subfolder with the `--base` command line parameter.
+
+Additionally, `bootstrap.sh` accepts parameters related to the database Typo3 should use. `bootstrap.sh` accepts these parameters for interoperability reasons with other scripts in this suite (which require a database connection). This allows you to construct a single configuration which all scripts can make use of.
+These parameters will be written to the Typo3 `localconf.php` file.
