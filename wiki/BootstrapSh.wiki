@@ -38,6 +38,8 @@ The correct contents for that configuration file can always be taken from the sc
 
 The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
 
+*Hint*: It may be desirable to construct a configuration file for `bootstrap.sh` right away (even though you might only be using the script once) as other scripts in this suite can use the same configuration file.
+
 = Examples =
 
 == Creating a fresh installation ==
