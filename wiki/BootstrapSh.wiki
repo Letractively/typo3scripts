@@ -27,11 +27,3 @@ $ ./bootstrap.sh --help
         When supplying other any command line argument, supply the target
         version through the --version command line parameter.
 }}}
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
