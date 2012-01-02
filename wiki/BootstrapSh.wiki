@@ -23,6 +23,7 @@ $ ./bootstrap.sh --help
   --skip-gm-detect    Skips the detection of GraphicsMagick.
   --skip-unzip-detect Skips the detection of the unzip utility.
   --skip-rights       Skip trying to fix access rights.
+  --owner=OWNER       The name of the user that owns the installation.
   --httpd-group=GROUP The user group the local HTTP daemon is running as.
 
   Database:
@@ -81,8 +82,11 @@ Unless this parameter is given, `bootstrap.sh` will look for an `unzip` binary a
 == `--skip-rights` / `SKIP_RIGHTS` ==
 Unless this parameter is given, `bootstrap.sh` will try to adjust access rights for the new Typo3 installation. Please note that fixing the access rights requires the script to run with elevated privileges (`sudo`).
 
+== `--owner` / `OWNER` ==
+Defines the name of the system user that should own the new Typo3 installation.
+
 == `--httpd-group` / `HTTPD_GROUP` ==
-Defines the name of the group the web server that serves the Typo3 installation is running as. This should be something like `www-data` (the default) or `apache`.
+Defines the name of the system group the web server that serves the Typo3 installation is running as. This should be something like `www-data` (the default) or `apache`.
 
 == `--hostname` / `HOST` ==
 The name of the host where the database for Typo3 is running.
