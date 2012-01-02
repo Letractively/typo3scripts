@@ -1,0 +1,86 @@
+#summary restoreBackup.sh - Restoring a snapshot of a Typo3 installation.
+
+= Introduction =
+
+The main purpose of `restoreBackup.sh` is to restore snapshots previously created by [CreateBackupSh createBackup.sh]. It is unlikely to have any use as a stand-alone script.
+
+= Arguments =
+{{{
+$ ./restoreBackup.sh --help
+  Usage: ./restoreBackup.sh [OPTIONS --file=<FILE>]|<FILE>
+
+  Core:
+  --help              Display this help and exit.
+  --update            Tries to update the script to the latest version.
+  --base=PATH         The name of the base path where Typo3 should be
+                      installed. If no base is supplied, "typo3" is used.
+  Options:
+  --file=FILE         The file in which the backup is stored.
+
+  Database:
+  --hostname=HOST     The name of the host where the Typo3 database is running.
+  --username=USER     The username to use when connecting to the Typo3
+                      database.
+  --password=PASSWORD The password to use when connecting to the Typo3
+                      database.
+  --database=DB       The name of the database in which Typo3 is stored.
+
+  Note: When using an external configuration file, it is sufficient to supply
+        just the name of the file that contains the backup as a parameter.
+        When supplying any other command line argument, supply the target file
+        through the --file command line parameter.
+}}}
+
+== Overview ==
+
+Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
+So for `restoreBackup.sh` the proper configuration file would be `restoreBackup.conf`.
+The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
+
+The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
+
+*Hint*: It may be desirable to share a configuration file between `createBackup.sh` and `restoreBackup.sh`.
+
+== `--help` ==
+Prints the output seen above, giving an overview of available command line parameters.
+
+== `--update` ==
+Invokes the self-updating mechanism in this script. This will download the latest release version (from SVN trunk) from `code.google.com` and replace your current script.
+
+Please note, every time the script runs it will perform a quick check if a new version is available. If a new version is found online, the following message will be printed to the standard output:
+{{{
+NOTE: New version available!
+}}}
+
+== `--base` / `BASE` ==
+By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation is placed in a differently named subfolder.
+{{{
+$ ./restoreBackup.sh --base=myt3site --file=myt3site-2012-01-02-14-25.tgz
+}}}
+
+== `--file` / `FILE` ==
+The name of the snapshot file that should be restored.
+
+== `--hostname` / `HOST` ==
+The name of the host where the database for Typo3 is running.
+
+== `--username` / `USER` ==
+The username for the connection to the database for the Typo3 installation.
+
+== `--password` / `PASS` ==
+The password for the connection to the database for the Typo3 installation.
+
+== `--database` / `DB` ==
+The name of the database for the Typo3 installation.
+
+= Examples =
+
+== Restoring a snapshot ==
+{{{
+/var/www$ cd t3site/
+/var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/restoreBackup.sh
+/var/www/t3site$ chmod 700 restoreBackup.sh
+/var/www/t3site$ ln -s typo3scripts.conf restoreBackup.conf
+/var/www/t3site$ ./restoreBackup.sh ...
+}}}
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.
