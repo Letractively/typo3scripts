@@ -1,0 +1,68 @@
+#summary switchVersion.sh - Change the Typo3 core version of an existing installation.
+
+= Introduction =
+
+The main purpose of `switchVersion.sh` is to allow for quick up-/downgrades of your Typo3 core.
+
+= Arguments =
+{{{
+$ ./switchVersion.sh --help
+  Usage: ./switchVersion.sh [OPTIONS --version=<VERSION>]|<VERSION>
+
+  Core:
+  --help            Display this help and exit.
+  --update          Tries to update the script to the latest version.
+  --base=PATH       The name of the base path where Typo3 should be installed.
+                    If no base is supplied, "typo3" is used.
+  Options:
+  --version=VERSION The version to switch to.
+
+  Note: When using an external configuration file, it is sufficient to supply
+        just the target version as a parameter.
+        When supplying any other command line argument, supply the target
+        version through the --version command line parameter.
+}}}
+
+== Overview ==
+
+Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
+So for `switchVersion.sh` the proper configuration file would be `switchVersion.conf`.
+The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
+
+The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
+
+== `--help` ==
+Prints the output seen above, giving an overview of available command line parameters.
+
+== `--update` ==
+Invokes the self-updating mechanism in this script. This will download the latest release version (from SVN trunk) from `code.google.com` and replace your current script.
+
+Please note, every time the script runs it will perform a quick check if a new version is available. If a new version is found online, the following message will be printed to the standard output:
+{{{
+NOTE: New version available!
+}}}
+
+== `--base` / `BASE` ==
+By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+{{{
+$ ./switchVersion.sh --base=myt3site --version=4.6.2
+}}}
+
+= Examples =
+
+== Creating a snapshot ==
+{{{
+/var/www$ cd t3site/
+/var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/switchVersion.sh
+/var/www/t3site$ chmod 700 switchVersion.sh
+/var/www/t3site$ ln -s typo3scripts.conf switchVersion.conf
+/var/www/t3site$ ./switchVersion.sh 4.5.8
+Sourcing script configuration from switchVersion.conf...Done.
+Looking for Typo3 source package at typo3/typo3_src-4.5.8/...NOT found! Downloading.
+Downloading http://prdownloads.sourceforge.net/typo3/typo3_src-4.5.8.tar.gz...Done.
+Extracting source package typo3/typo3_src-4.5.8.tar.gz...Done.
+Switching Typo3 source symlink to typo3/typo3_src-4.5.8/...Done.
+Deleting temp_CACHED_* files from typo3conf...Done!
+Version switched to 4.5.8.
+}}}
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.
