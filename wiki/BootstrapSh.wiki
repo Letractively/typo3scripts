@@ -2,7 +2,7 @@
 
 = Introduction =
 
-*Note*: `bootstrap.sh` is currently the focus of development. Please check the [http://code.google.com/p/typo3scripts/source/browse/branches/dev/bootstrap.sh development branch] for the latest version.
+*Note*: `bootstrap.sh` is currently the focus of development. Please check the [http://code.google.com/p/typo3scripts/source/browse/branches/dev/bootstrap.sh development branch] for the latest version. This documentation may refer to features not present in the release version of this script.
 
 The main purpose of `bootstrap.sh` is to ease deployment of a new Typo3 installation. At the time of writing, the easing is limited mostly to downloading the Typo3 package for you.
 
@@ -19,6 +19,11 @@ $ ./bootstrap.sh --help
 
   Options:
   --version=VERSION   The version to install.
+  --skip-db-config    Skips writing the database configuration to localconf.php
+  --skip-gm-detect    Skips the detection of GraphicsMagick.
+  --skip-unzip-detect Skips the detection of the unzip utility.
+  --skip-rights       Skip trying to fix access rights.
+  --httpd-group=GROUP The user group the local HTTP daemon is running as.
 
   Database:
   --hostname=HOST     The name of the host where the Typo3 database is running.
@@ -34,6 +39,8 @@ $ ./bootstrap.sh --help
         version through the --version command line parameter.
 }}}
 
+== Overview ==
+
 Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
 So for `bootstrap.sh` the proper configuration file would be `bootstrap.conf`.
 The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
@@ -41,6 +48,23 @@ The correct contents for that configuration file can always be taken from the sc
 The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
 
 *Hint*: It may be desirable to construct a configuration file for `bootstrap.sh` right away (even though you might only be using the script once) as other scripts in this suite can use the same configuration file.
+
+== `--help` ==
+Prints the output seen above, giving an overview of available command line parameters.
+
+== `--update` ==
+Invokes the self-updating mechanism in this script. This will download the latest release version (from SVN trunk) from `code.google.com` and replace your current script.
+
+Please note, every time the script runs it will perform a quick check if a new version is available. If a new version is found online, the following message will be printed to the standard output:
+{{{
+NOTE: New version available!
+}}}
+
+== `--base` ==
+By default, Typo3 installations will be created in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+{{{
+$ bootstrap.sh --version=4.6.0 --base=myt3site
+}}}
 
 = Examples =
 
