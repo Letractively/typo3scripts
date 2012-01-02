@@ -104,12 +104,14 @@ The name of the database for the Typo3 installation. This parameter is currently
 /var/www$ cd t3site/
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/bootstrap.sh
 /var/www/t3site$ chmod 700 bootstrap.sh
-/var/www/t3site$ ./bootstrap.sh 4.6.0
-Looking for Typo3 package at blankpackage-4.6.0.tar.gz...NOT found!
-Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.0.tar.gz...Done.
-Extracting Typo3 package blankpackage-4.6.0.tar.gz...Done.
+/var/www/t3site$ sudo ./bootstrap.sh 4.6.1
+Looking for Typo3 package at blankpackage-4.6.1.tar.gz...NOT found!
+Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.1.tar.gz...Done.
+Extracting Typo3 package blankpackage-4.6.1.tar.gz...Done.
 Moving Typo3 package to typo3...Done.
 Generating localconf.php...Done.
+Adjusting access permissions for Typo3 installation...Done.
+Enabling install tool...Done.
 }}}
 Creating a new installation is straight-forward. You simply retrieve the script, make it executable and pass the Typo3 version you want to use as an argument.
 
