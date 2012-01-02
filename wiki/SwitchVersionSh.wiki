@@ -48,6 +48,9 @@ By default, it is assumed that the Typo3 installation is located in a subfolder 
 $ ./switchVersion.sh --base=myt3site --version=4.6.2
 }}}
 
+== `--version` / `VERSION` ==
+The version of Typo3 we should switch to.
+
 = Examples =
 
 == Creating a snapshot ==
