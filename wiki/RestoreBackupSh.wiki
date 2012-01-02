@@ -4,6 +4,31 @@
 
 The main purpose of `restoreBackup.sh` is to restore snapshots previously created by [CreateBackupSh createBackup.sh]. It is unlikely to have any use as a stand-alone script.
 
+= Privileges =
+
+Due to the fact that `restoreBackup.sh` tries to delete the Typo3 base installation folder, elevated privileges (`sudo`) might be required. This is required because Typo3 most likely created files in the installation folder that are now owned by the user that runs the HTTP daemon. See the following example output displaying the issue noted above.
+
+{{{
+/var/www/t3site$ ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
+Sourcing script configuration from restoreBackup.conf...Done.
+Testing write permissions in typo3...Failed!
+typo3/typo3conf/temp_CACHED_pse643_ext_localconf.php is not writable!
+}}}
+
+To work around this issue, you could rename the Typo3 base installation directory and re-create it.
+
+{{{
+/var/www/t3site$ mv typo3 backup
+/var/www/t3site$ mkdir typo3
+/var/www/t3site$ ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
+Sourcing script configuration from restoreBackup.conf...Done.
+Testing write permissions in typo3...Succeeded
+Erasing current Typo3 installation 'typo3'...Done.
+Extracting Typo3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
+Importing database dump...Done.
+Deleting database dump...Done!
+}}}
+
 = Arguments =
 {{{
 $ ./restoreBackup.sh --help
@@ -81,6 +106,13 @@ The name of the database for the Typo3 installation.
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/restoreBackup.sh
 /var/www/t3site$ chmod 700 restoreBackup.sh
 /var/www/t3site$ ln -s typo3scripts.conf restoreBackup.conf
-/var/www/t3site$ ./restoreBackup.sh ...
+/var/www/t3site$ sudo ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
+Sourcing script configuration from restoreBackup.conf...Done.
+Testing write permissions in typo3...Succeeded
+Erasing current Typo3 installation 'typo3'...Done.
+Extracting Typo3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
+Importing database dump...Done.
+Deleting database dump...Done!
 }}}
+
 Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.
