@@ -16,6 +16,7 @@ $ ./bootstrap.sh --help
   --update            Tries to update the script to the latest version.
   --base=PATH         The name of the base path where Typo3 should be
                       installed. If no base is supplied, "typo3" is used.
+  --export-config     Prints the default configuration of this script.
 
   Options:
   --version=VERSION   The version to install.
@@ -65,6 +66,14 @@ NOTE: New version available!
 By default, Typo3 installations will be created in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
 {{{
 $ ./bootstrap.sh --version=4.6.0 --base=myt3site
+}}}
+
+== `--export-config` ==
+Print the default configuration of the script to the standard output.
+
+This allows for easy generation of a default config file, like so:
+{{{
+$ ./bootstrap.sh --export-config > typo3scripts.conf
 }}}
 
 == `--version` / `VERSION` ==
