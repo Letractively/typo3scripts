@@ -39,6 +39,8 @@ $ ./restoreBackup.sh --help
   --update            Tries to update the script to the latest version.
   --base=PATH         The name of the base path where Typo3 should be
                       installed. If no base is supplied, "typo3" is used.
+  --export-config     Prints the default configuration of this script.
+
   Options:
   --file=FILE         The file in which the backup is stored.
 
@@ -81,6 +83,14 @@ NOTE: New version available!
 By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation is placed in a differently named subfolder.
 {{{
 $ ./restoreBackup.sh --base=myt3site --file=myt3site-2012-01-02-14-25.tgz
+}}}
+
+== `--export-config` ==
+Print the default configuration of the script to the standard output.
+
+This allows for easy generation of a default config file, like so:
+{{{
+$ ./restoreBackup.sh --export-config > typo3scripts.conf
 }}}
 
 == `--file` / `FILE` ==
