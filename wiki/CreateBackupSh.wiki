@@ -13,7 +13,10 @@ $ ./createBackup.sh --help
   --help              Display this help and exit.
   --update            Tries to update the script to the latest version.
   --base=PATH         The name of the base path where Typo3 should be
-                      installed. If no base is supplied, "typo3" is used.
+                      installed. If no base is supplied, "typo3" is 
+used.
+  --export-config     Prints the default configuration of this script.
+
   Database:
   --hostname=HOST     The name of the host where the Typo3 database is running.
   --username=USER     The username to use when connecting to the Typo3
@@ -48,6 +51,14 @@ NOTE: New version available!
 By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
 {{{
 $ ./createBackup.sh --base=myt3site
+}}}
+
+== `--export-config` ==
+Print the default configuration of the script to the standard output.
+
+This allows for easy generation of a default config file, like so:
+{{{
+$ ./createBackup.sh --export-config > typo3scripts.conf
 }}}
 
 == `--hostname` / `HOST` ==
