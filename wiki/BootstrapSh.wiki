@@ -2,8 +2,6 @@
 
 = Introduction =
 
-*Note*: `bootstrap.sh` is currently the focus of development. Please check the [http://code.google.com/p/typo3scripts/source/browse/branches/dev/bootstrap.sh development branch] for the latest version. This documentation may refer to features not present in the release version of this script.
-
 The main purpose of `bootstrap.sh` is to ease deployment of a new Typo3 installation. At the time of writing, the easing is limited mostly to downloading the Typo3 package for you.
 
 = Arguments =
