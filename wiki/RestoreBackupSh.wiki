@@ -90,7 +90,7 @@ Print the default configuration of the script to the standard output.
 
 This allows for easy generation of a default config file, like so:
 {{{
-$ ./restoreBackup.sh --export-config > typo3scripts.conf
+$ ./restoreBackup.sh --export-config > restoreBackup.conf
 }}}
 
 == `--file` / `FILE` ==
