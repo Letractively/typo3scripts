@@ -16,6 +16,7 @@ $ ./createBackup.sh --help
                       installed. If no base is supplied, "typo3" is 
 used.
   --export-config     Prints the default configuration of this script.
+  --extract-config    Extracts configuration parameters from Typo3.
 
   Database:
   --hostname=HOST     The name of the host where the Typo3 database is running.
