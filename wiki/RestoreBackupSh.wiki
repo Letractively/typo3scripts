@@ -94,6 +94,19 @@ This allows for easy generation of a default config file, like so:
 $ ./restoreBackup.sh --export-config > restoreBackup.conf
 }}}
 
+== `--extract-config` ==
+Tries to read the database-related parameters out of the Typo3 configuration file.
+
+This allows for easy generation of a base config file, like so:
+{{{
+$ ./restoreBackup.sh --extract-config > restoreBackup.conf
+}}}
+
+In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+{{{
+$ ./restoreBackup.sh --base=myt3site --extract-config > restoreBackup.conf
+}}}
+
 == `--file` / `FILE` ==
 The name of the snapshot file that should be restored.
 
