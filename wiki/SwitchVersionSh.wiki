@@ -59,6 +59,19 @@ This allows for easy generation of a default config file, like so:
 $ ./switchVersion.sh --export-config > switchVersion.conf
 }}}
 
+== `--extract-config` ==
+Tries to read the database-related parameters out of the Typo3 configuration file.
+
+This allows for easy generation of a base config file, like so:
+{{{
+$ ./switchVersion.sh --extract-config > switchVersion.conf
+}}}
+
+In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+{{{
+$ ./switchVersion.sh --base=myt3site --extract-config > switchVersion.conf
+}}}
+
 == `--version` / `VERSION` ==
 The version of Typo3 we should switch to.
 
