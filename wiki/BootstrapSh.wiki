@@ -76,6 +76,19 @@ This allows for easy generation of a default config file, like so:
 $ ./bootstrap.sh --export-config > typo3scripts.conf
 }}}
 
+== `--extract-config` ==
+Tries to read the database-related parameters out of the Typo3 configuration file.
+
+This allows for easy generation of a base config file for other typo3scripts after you have completed your Typo3 installation.
+{{{
+$ ./bootstrap.sh --extract-config > typo3scripts.conf
+}}}
+
+In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+{{{
+$ ./bootstrap.sh --base=myt3site --extract-config > typo3scripts.conf
+}}}
+
 == `--version` / `VERSION` ==
 The version of Typo3 that should be installed.
 
