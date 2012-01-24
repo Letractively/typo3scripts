@@ -15,6 +15,7 @@ $ ./bootstrap.sh --help
   --base=PATH         The name of the base path where Typo3 should be
                       installed. If no base is supplied, "typo3" is used.
   --export-config     Prints the default configuration of this script.
+  --extract-config    Extracts configuration parameters from Typo3.
 
   Options:
   --version=VERSION   The version to install.
