@@ -1,8 +1,8 @@
-#summary switchVersion.sh - Change the Typo3 core version of an existing installation.
+#summary switchVersion.sh - Change the TYPO3 core version of an existing installation.
 
 = Introduction =
 
-The main purpose of `switchVersion.sh` is to allow for quick up-/downgrades of your Typo3 core.
+The main purpose of `switchVersion.sh` is to allow for quick up-/downgrades of your TYPO3 core.
 
 = Arguments =
 {{{
@@ -12,10 +12,10 @@ $ ./switchVersion.sh --help
   Core:
   --help            Display this help and exit.
   --update          Tries to update the script to the latest version.
-  --base=PATH       The name of the base path where Typo3 should be installed.
+  --base=PATH       The name of the base path where TYPO3 should be installed.
                     If no base is supplied, "typo3" is used.
   --export-config   Prints the default configuration of this script.
-  --extract-config  Extracts configuration parameters from Typo3.
+  --extract-config  Extracts configuration parameters from TYPO3.
 
   Options:
   --version=VERSION The version to switch to.
@@ -46,7 +46,7 @@ NOTE: New version available!
 }}}
 
 == `--base` / `BASE` ==
-By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+By default, it is assumed that the TYPO3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
 {{{
 $ ./switchVersion.sh --base=myt3site --version=4.6.2
 }}}
@@ -60,20 +60,20 @@ $ ./switchVersion.sh --export-config > switchVersion.conf
 }}}
 
 == `--extract-config` ==
-Tries to read the database-related parameters out of the Typo3 configuration file.
+Tries to read the database-related parameters out of the TYPO3 configuration file.
 
 This allows for easy generation of a base config file, like so:
 {{{
 $ ./switchVersion.sh --extract-config > switchVersion.conf
 }}}
 
-In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+In case you're using a non-default TYPO3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
 {{{
 $ ./switchVersion.sh --base=myt3site --extract-config > switchVersion.conf
 }}}
 
 == `--version` / `VERSION` ==
-The version of Typo3 we should switch to.
+The version of TYPO3 we should switch to.
 
 = Examples =
 
@@ -85,10 +85,10 @@ The version of Typo3 we should switch to.
 /var/www/t3site$ ln -s typo3scripts.conf switchVersion.conf
 /var/www/t3site$ ./switchVersion.sh 4.5.8
 Sourcing script configuration from switchVersion.conf...Done.
-Looking for Typo3 source package at typo3/typo3_src-4.5.8/...NOT found! Downloading.
+Looking for TYPO3 source package at typo3/typo3_src-4.5.8/...NOT found! Downloading.
 Downloading http://prdownloads.sourceforge.net/typo3/typo3_src-4.5.8.tar.gz...Done.
 Extracting source package typo3/typo3_src-4.5.8.tar.gz...Done.
-Switching Typo3 source symlink to typo3/typo3_src-4.5.8/...Done.
+Switching TYPO3 source symlink to typo3/typo3_src-4.5.8/...Done.
 Deleting temp_CACHED_* files from typo3conf...Done!
 Version switched to 4.5.8.
 }}}

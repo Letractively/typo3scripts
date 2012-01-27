@@ -1,4 +1,4 @@
-#summary restoreBackup.sh - Restoring a snapshot of a Typo3 installation.
+#summary restoreBackup.sh - Restoring a snapshot of a TYPO3 installation.
 
 = Introduction =
 
@@ -6,7 +6,7 @@ The main purpose of `restoreBackup.sh` is to restore snapshots previously create
 
 = Privileges =
 
-Due to the fact that `restoreBackup.sh` tries to delete the Typo3 base installation folder, elevated privileges (`sudo`) might be required. This is required because Typo3 most likely created files in the installation folder that are now owned by the user that runs the HTTP daemon. See the following example output displaying the issue noted above.
+Due to the fact that `restoreBackup.sh` tries to delete the TYPO3 base installation folder, elevated privileges (`sudo`) might be required. This is required because TYPO3 most likely created files in the installation folder that are now owned by the user that runs the HTTP daemon. See the following example output displaying the issue noted above.
 
 {{{
 /var/www/t3site$ ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
@@ -15,7 +15,7 @@ Testing write permissions in typo3...Failed!
 typo3/typo3conf/temp_CACHED_pse643_ext_localconf.php is not writable!
 }}}
 
-To work around this issue, you could rename the Typo3 base installation directory and re-create it.
+To work around this issue, you could rename the TYPO3 base installation directory and re-create it.
 
 {{{
 /var/www/t3site$ mv typo3 backup
@@ -23,8 +23,8 @@ To work around this issue, you could rename the Typo3 base installation director
 /var/www/t3site$ ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
 Sourcing script configuration from restoreBackup.conf...Done.
 Testing write permissions in typo3...Succeeded
-Erasing current Typo3 installation 'typo3'...Done.
-Extracting Typo3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
+Erasing current TYPO3 installation 'typo3'...Done.
+Extracting TYPO3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
 Importing database dump...Done.
 Deleting database dump...Done!
 }}}
@@ -37,21 +37,21 @@ $ ./restoreBackup.sh --help
   Core:
   --help              Display this help and exit.
   --update            Tries to update the script to the latest version.
-  --base=PATH         The name of the base path where Typo3 should be
+  --base=PATH         The name of the base path where TYPO3 should be
                       installed. If no base is supplied, "typo3" is used.
   --export-config     Prints the default configuration of this script.
-  --extract-config    Extracts configuration parameters from Typo3.
+  --extract-config    Extracts configuration parameters from TYPO3.
 
   Options:
   --file=FILE         The file in which the backup is stored.
 
   Database:
-  --hostname=HOST     The name of the host where the Typo3 database is running.
-  --username=USER     The username to use when connecting to the Typo3
+  --hostname=HOST     The name of the host where the TYPO3 database is running.
+  --username=USER     The username to use when connecting to the TYPO3
                       database.
-  --password=PASSWORD The password to use when connecting to the Typo3
+  --password=PASSWORD The password to use when connecting to the TYPO3
                       database.
-  --database=DB       The name of the database in which Typo3 is stored.
+  --database=DB       The name of the database in which TYPO3 is stored.
 
   Note: When using an external configuration file, it is sufficient to supply
         just the name of the file that contains the backup as a parameter.
@@ -81,7 +81,7 @@ NOTE: New version available!
 }}}
 
 == `--base` / `BASE` ==
-By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation is placed in a differently named subfolder.
+By default, it is assumed that the TYPO3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation is placed in a differently named subfolder.
 {{{
 $ ./restoreBackup.sh --base=myt3site --file=myt3site-2012-01-02-14-25.tgz
 }}}
@@ -95,14 +95,14 @@ $ ./restoreBackup.sh --export-config > restoreBackup.conf
 }}}
 
 == `--extract-config` ==
-Tries to read the database-related parameters out of the Typo3 configuration file.
+Tries to read the database-related parameters out of the TYPO3 configuration file.
 
 This allows for easy generation of a base config file, like so:
 {{{
 $ ./restoreBackup.sh --extract-config > restoreBackup.conf
 }}}
 
-In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+In case you're using a non-default TYPO3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
 {{{
 $ ./restoreBackup.sh --base=myt3site --extract-config > restoreBackup.conf
 }}}
@@ -111,16 +111,16 @@ $ ./restoreBackup.sh --base=myt3site --extract-config > restoreBackup.conf
 The name of the snapshot file that should be restored.
 
 == `--hostname` / `HOST` ==
-The name of the host where the database for Typo3 is running.
+The name of the host where the database for TYPO3 is running.
 
 == `--username` / `USER` ==
-The username for the connection to the database for the Typo3 installation.
+The username for the connection to the database for the TYPO3 installation.
 
 == `--password` / `PASS` ==
-The password for the connection to the database for the Typo3 installation.
+The password for the connection to the database for the TYPO3 installation.
 
 == `--database` / `DB` ==
-The name of the database for the Typo3 installation.
+The name of the database for the TYPO3 installation.
 
 = Examples =
 
@@ -133,8 +133,8 @@ The name of the database for the Typo3 installation.
 /var/www/t3site$ sudo ./restoreBackup.sh typo3-2012-01-02-17-56.tgz
 Sourcing script configuration from restoreBackup.conf...Done.
 Testing write permissions in typo3...Succeeded
-Erasing current Typo3 installation 'typo3'...Done.
-Extracting Typo3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
+Erasing current TYPO3 installation 'typo3'...Done.
+Extracting TYPO3 backup 'typo3-2012-01-02-17-56.tgz'...Done.
 Importing database dump...Done.
 Deleting database dump...Done!
 }}}

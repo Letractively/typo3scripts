@@ -1,8 +1,8 @@
-#summary createBackup.sh - Creating a snapshot of an existing Typo3 installation.
+#summary createBackup.sh - Creating a snapshot of an existing TYPO3 installation.
 
 = Introduction =
 
-The main purpose of `createBackup.sh` is to create a snapshot of all files in the Typo3 installation as well as the Typo3 database. To restore such a snapshot use [RestoreBackupSh restoreBackup.sh].
+The main purpose of `createBackup.sh` is to create a snapshot of all files in the TYPO3 installation as well as the TYPO3 database. To restore such a snapshot use [RestoreBackupSh restoreBackup.sh].
 
 = Arguments =
 {{{
@@ -12,19 +12,19 @@ $ ./createBackup.sh --help
   Core:
   --help              Display this help and exit.
   --update            Tries to update the script to the latest version.
-  --base=PATH         The name of the base path where Typo3 should be
+  --base=PATH         The name of the base path where TYPO3 should be
                       installed. If no base is supplied, "typo3" is 
 used.
   --export-config     Prints the default configuration of this script.
-  --extract-config    Extracts configuration parameters from Typo3.
+  --extract-config    Extracts configuration parameters from TYPO3.
 
   Database:
-  --hostname=HOST     The name of the host where the Typo3 database is running.
-  --username=USER     The username to use when connecting to the Typo3
+  --hostname=HOST     The name of the host where the TYPO3 database is running.
+  --username=USER     The username to use when connecting to the TYPO3
                       database.
-  --password=PASSWORD The password to use when connecting to the Typo3
+  --password=PASSWORD The password to use when connecting to the TYPO3
                       database.
-  --database=DB       The name of the database in which Typo3 is stored.
+  --database=DB       The name of the database in which TYPO3 is stored.
 }}}
 
 == Overview ==
@@ -49,7 +49,7 @@ NOTE: New version available!
 }}}
 
 == `--base` / `BASE` ==
-By default, it is assumed that the Typo3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+By default, it is assumed that the TYPO3 installation is located in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
 {{{
 $ ./createBackup.sh --base=myt3site
 }}}
@@ -63,29 +63,29 @@ $ ./createBackup.sh --export-config > createBackup.conf
 }}}
 
 == `--extract-config` ==
-Tries to read the database-related parameters out of the Typo3 configuration file.
+Tries to read the database-related parameters out of the TYPO3 configuration file.
 
 This allows for easy generation of a base config file, like so:
 {{{
 $ ./createBackup.sh --extract-config > createBackup.conf
 }}}
 
-In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+In case you're using a non-default TYPO3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
 {{{
 $ ./createBackup.sh --base=myt3site --extract-config > createBackup.conf
 }}}
 
 == `--hostname` / `HOST` ==
-The name of the host where the database for Typo3 is running.
+The name of the host where the database for TYPO3 is running.
 
 == `--username` / `USER` ==
-The username for the connection to the database for the Typo3 installation.
+The username for the connection to the database for the TYPO3 installation.
 
 == `--password` / `PASS` ==
-The password for the connection to the database for the Typo3 installation.
+The password for the connection to the database for the TYPO3 installation.
 
 == `--database` / `DB` ==
-The name of the database for the Typo3 installation.
+The name of the database for the TYPO3 installation.
 
 = Examples =
 
@@ -97,9 +97,9 @@ The name of the database for the Typo3 installation.
 /var/www/t3site$ ln -s typo3scripts.conf createBackup.conf
 /var/www/t3site$ ./createBackup.sh
 Sourcing script configuration from createBackup.conf...Done.
-Creating Typo3 backup 'typo3-2012-01-02-14-19.tgz'...
+Creating TYPO3 backup 'typo3-2012-01-02-14-19.tgz'...
 Creating database dump at typo3/database.sql...Done.
-Compressing Typo3 installation...Done.
+Compressing TYPO3 installation...Done.
 Deleting database dump...Done!
 }}}
 Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.

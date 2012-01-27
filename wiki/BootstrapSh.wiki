@@ -1,8 +1,8 @@
-#summary bootstrap.sh - Creating a new Typo3 installation from scratch.
+#summary bootstrap.sh - Creating a new TYPO3 installation from scratch.
 
 = Introduction =
 
-The main purpose of `bootstrap.sh` is to ease deployment of a new Typo3 installation. At the time of writing, the easing is limited mostly to downloading the Typo3 package for you.
+The main purpose of `bootstrap.sh` is to ease deployment of a new TYPO3 installation. At the time of writing, the easing is limited mostly to downloading the TYPO3 package for you.
 
 = Arguments =
 {{{
@@ -12,10 +12,10 @@ $ ./bootstrap.sh --help
   Core:
   --help              Display this help and exit.
   --update            Tries to update the script to the latest version.
-  --base=PATH         The name of the base path where Typo3 should be
+  --base=PATH         The name of the base path where TYPO3 should be
                       installed. If no base is supplied, "typo3" is used.
   --export-config     Prints the default configuration of this script.
-  --extract-config    Extracts configuration parameters from Typo3.
+  --extract-config    Extracts configuration parameters from TYPO3.
 
   Options:
   --version=VERSION   The version to install.
@@ -28,12 +28,12 @@ $ ./bootstrap.sh --help
   --fix-indexphp      Replaces the index.php symlink with the actual file.
 
   Database:
-  --hostname=HOST     The name of the host where the Typo3 database is running.
-  --username=USER     The username to use when connecting to the Typo3
+  --hostname=HOST     The name of the host where the TYPO3 database is running.
+  --username=USER     The username to use when connecting to the TYPO3
                       database.
-  --password=PASSWORD The password to use when connecting to the Typo3
+  --password=PASSWORD The password to use when connecting to the TYPO3
                       database.
-  --database=DB       The name of the database in which Typo3 is stored.
+  --database=DB       The name of the database in which TYPO3 is stored.
 
   Note: When using an external configuration file, it is sufficient to supply
         just the target version as a parameter.
@@ -63,7 +63,7 @@ NOTE: New version available!
 }}}
 
 == `--base` / `BASE` ==
-By default, Typo3 installations will be created in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+By default, TYPO3 installations will be created in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
 {{{
 $ ./bootstrap.sh --version=4.6.0 --base=myt3site
 }}}
@@ -77,54 +77,54 @@ $ ./bootstrap.sh --export-config > typo3scripts.conf
 }}}
 
 == `--extract-config` ==
-Tries to read the database-related parameters out of the Typo3 configuration file.
+Tries to read the database-related parameters out of the TYPO3 configuration file.
 
-This allows for easy generation of a base config file for other typo3scripts after you have completed your Typo3 installation.
+This allows for easy generation of a base config file for other typo3scripts after you have completed your TYPO3 installation.
 {{{
 $ ./bootstrap.sh --extract-config > typo3scripts.conf
 }}}
 
-In case you're using a non-default Typo3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+In case you're using a non-default TYPO3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
 {{{
 $ ./bootstrap.sh --base=myt3site --extract-config > typo3scripts.conf
 }}}
 
 == `--version` / `VERSION` ==
-The version of Typo3 that should be installed.
+The version of TYPO3 that should be installed.
 
 == `--skip-db-config` / `SKIP_DB_CONFIG` ==
-Unless this parameter is given, `bootstrap.sh` will write database related parameters to the Typo3 `localconf.php`.
+Unless this parameter is given, `bootstrap.sh` will write database related parameters to the TYPO3 `localconf.php`.
 
 == `--skip-gm-detect` / `SKIP_GM_DETECT` ==
-Unless this parameter is given, `bootstrap.sh` will look for a GraphicsMagick binary and, if found, write the location to the Typo3 `localconf.php` as `$TYPO3_CONF_VARS['GFX']['im_version_5']`.
+Unless this parameter is given, `bootstrap.sh` will look for a GraphicsMagick binary and, if found, write the location to the TYPO3 `localconf.php` as `$TYPO3_CONF_VARS['GFX']['im_version_5']`.
 
 == `--skip-unzip-detect` / `SKIP_UNZIP_DETECT` ==
-Unless this parameter is given, `bootstrap.sh` will look for an `unzip` binary and, if found, write the location to the Typo3 `localconf.php` as `$TYPO3_CONF_VARS['BE']['unzip_path']`.
+Unless this parameter is given, `bootstrap.sh` will look for an `unzip` binary and, if found, write the location to the TYPO3 `localconf.php` as `$TYPO3_CONF_VARS['BE']['unzip_path']`.
 
 == `--skip-rights` / `SKIP_RIGHTS` ==
-Unless this parameter is given, `bootstrap.sh` will try to adjust access rights for the new Typo3 installation. Please note that fixing the access rights requires the script to run with elevated privileges (`sudo`).
+Unless this parameter is given, `bootstrap.sh` will try to adjust access rights for the new TYPO3 installation. Please note that fixing the access rights requires the script to run with elevated privileges (`sudo`).
 
 == `--owner` / `OWNER` ==
-Defines the name of the system user that should own the new Typo3 installation.
+Defines the name of the system user that should own the new TYPO3 installation.
 
 == `--httpd-group` / `HTTPD_GROUP` ==
-Defines the name of the system group the web server that serves the Typo3 installation is running as. This should be something like `www-data` (the default) or `apache`.
+Defines the name of the system group the web server that serves the TYPO3 installation is running as. This should be something like `www-data` (the default) or `apache`.
 
 == `--fix-indexphp` / `FIX_INDEXPHP` ==
 Using this option will remove the symbolic link for `index.php` and replace it with a copy of the actual file. The symlink causes problems with certain hosting providers.
 Please note, SwitchVersionSh is aware if this approach was used during an installation and will keep the copied file up-to-date for you.
 
 == `--hostname` / `HOST` ==
-The name of the host where the database for Typo3 is running.
+The name of the host where the database for TYPO3 is running.
 
 == `--username` / `USER` ==
-The username for the connection to the database for the Typo3 installation.
+The username for the connection to the database for the TYPO3 installation.
 
 == `--password` / `PASS` ==
-The password for the connection to the database for the Typo3 installation. If not defined, `bootstrap.sh` will try to initialize the password to a random 16 character string.
+The password for the connection to the database for the TYPO3 installation. If not defined, `bootstrap.sh` will try to initialize the password to a random 16 character string.
 
 == `--database` / `DB` ==
-The name of the database for the Typo3 installation. This parameter is currently unused.
+The name of the database for the TYPO3 installation. This parameter is currently unused.
 
 = Examples =
 
@@ -135,17 +135,17 @@ The name of the database for the Typo3 installation. This parameter is currently
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/bootstrap.sh
 /var/www/t3site$ chmod 700 bootstrap.sh
 /var/www/t3site$ sudo ./bootstrap.sh 4.6.1
-Looking for Typo3 package at blankpackage-4.6.1.tar.gz...NOT found!
+Looking for TYPO3 package at blankpackage-4.6.1.tar.gz...NOT found!
 Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.1.tar.gz...Done.
-Extracting Typo3 package blankpackage-4.6.1.tar.gz...Done.
-Moving Typo3 package to typo3...Done.
+Extracting TYPO3 package blankpackage-4.6.1.tar.gz...Done.
+Moving TYPO3 package to typo3...Done.
 Generating localconf.php...Done.
-Adjusting access permissions for Typo3 installation...Done.
+Adjusting access permissions for TYPO3 installation...Done.
 Enabling install tool...Done.
 }}}
-Creating a new installation is straight-forward. You simply retrieve the script, make it executable and pass the Typo3 version you want to use as an argument.
+Creating a new installation is straight-forward. You simply retrieve the script, make it executable and pass the TYPO3 version you want to use as an argument.
 
-By default, the installation will be created in a subfolder called `typo3`. This is due to the way the other scripts interact with a Typo3 installation. You can change the name of that subfolder with the `--base` command line parameter.
+By default, the installation will be created in a subfolder called `typo3`. This is due to the way the other scripts interact with a TYPO3 installation. You can change the name of that subfolder with the `--base` command line parameter.
 
-Additionally, `bootstrap.sh` accepts parameters related to the database Typo3 should use. `bootstrap.sh` accepts these parameters for interoperability reasons with other scripts in this suite (which require a database connection). This allows you to construct a single configuration which all scripts can make use of.
-These parameters will be written to the Typo3 `localconf.php` file (unless disabled via `--skip-db-config`).
+Additionally, `bootstrap.sh` accepts parameters related to the database TYPO3 should use. `bootstrap.sh` accepts these parameters for interoperability reasons with other scripts in this suite (which require a database connection). This allows you to construct a single configuration which all scripts can make use of.
+These parameters will be written to the TYPO3 `localconf.php` file (unless disabled via `--skip-db-config`).
