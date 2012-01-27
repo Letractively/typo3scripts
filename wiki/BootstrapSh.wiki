@@ -2,7 +2,7 @@
 
 = Introduction =
 
-The main purpose of `bootstrap.sh` is to ease deployment of a new TYPO3 installation. At the time of writing, the easing is limited mostly to downloading the TYPO3 package for you.
+The main purpose of `bootstrap.sh` is to ease deployment of a new TYPO3 installation.
 
 = Arguments =
 {{{
