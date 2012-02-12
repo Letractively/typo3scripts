@@ -43,3 +43,6 @@ $ chmod 600 typo3scripts.conf
 }}}
 
 Now all scripts should be able to use it for their operation. So you never have to supply and database-related parameters on the command line.
+
+== Recommended Configuration ==
+Usually you'll want to only have a single `typo3scripts.conf` file with the configuration for database access and the base installation directory. The script-specific configuration files should only rarely required.
