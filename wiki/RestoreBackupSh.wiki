@@ -61,13 +61,9 @@ $ ./restoreBackup.sh --help
 
 == Overview ==
 
-Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
-So for `restoreBackup.sh` the proper configuration file would be `restoreBackup.conf`.
-The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
+For general information regarding the configuration of scripts in the typo3scripts suite, please see the article about [Configuration].
 
-The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
-
-*Hint*: It may be desirable to share a configuration file between `createBackup.sh` and `restoreBackup.sh`.
+*Hint*: It may be desirable to share a configuration file (at least) between `createBackup.sh` and `restoreBackup.sh`.
 
 == `--help` ==
 Prints the output seen above, giving an overview of available command line parameters.

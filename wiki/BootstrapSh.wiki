@@ -43,11 +43,7 @@ $ ./bootstrap.sh --help
 
 == Overview ==
 
-Please note, all scripts in the typo3scripts suite always try to _source_ these parameters from an external configuration file named like the script itself with a `.conf` suffix rather than the `.sh` suffix.
-So for `bootstrap.sh` the proper configuration file would be `bootstrap.conf`.
-The correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.
-
-The script will always assume the default configuration at first (as defined in the script itself). It then overrides the default configuration with the one defined in aforementioned configuration file. It will then override those values with whatever had been passed on the command line.
+For general information regarding the configuration of scripts in the typo3scripts suite, please see the article about [Configuration].
 
 *Hint*: It may be desirable to construct a configuration file for `bootstrap.sh` right away (even though you might only be using the script once) as other scripts in this suite can use the same configuration file.
 
