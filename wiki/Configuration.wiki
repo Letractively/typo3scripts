@@ -1,0 +1,7 @@
+#summary Configuration options in the typo3scripts script suite.
+
+= Introduction =
+
+In this article we will look at all the different ways to configure the scripts found in this project. We will also present recommended configuration approaches.
+
+= Details =
