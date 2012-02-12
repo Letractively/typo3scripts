@@ -102,7 +102,7 @@ Now replace the interpreter on line 1 of `extExtract.php` with the value that `w
 By default, `extExtract.php` will assume that the PHP command line interpreter (version 5.0+) is located at `/usr/bin/php`. If the version located there is too low, some methods won't be available for use. This will result in error like:
 {{{
 <br />
-<b>Fatal error</b>:  Call to undefined function:  file_put_contents() in <b>/kunden/132914_32457/webseiten/extExtract.php</b> on line <b>149</b><br />
+<b>Fatal error</b>:  Call to undefined function:  file_put_contents() in <b>/users/hamburgler/websites/extExtract.php</b> on line <b>149</b><br />
 }}}
 If multiple versions of PHP are installed on your host, change the interpreter to match the location of your latest (5.0+) PHP installation.
 
