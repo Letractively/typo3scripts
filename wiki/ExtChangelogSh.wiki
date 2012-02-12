@@ -36,7 +36,7 @@ $ ./extChangelog.sh --help
 
 == Overview ==
 
-For general information regarding the configuration of scripts in the typo3scripts suite, please see the article about Configuration.
+For general information regarding the configuration of scripts in the typo3scripts suite, please see the article about [Configuration].
 
 == `--help` ==
 Prints the output seen above, giving an overview of available command line parameters.
