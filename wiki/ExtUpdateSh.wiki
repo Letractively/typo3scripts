@@ -75,6 +75,18 @@ In case you're using a non-default TYPO3 installation directory, make sure to su
 $ ./extUpdate.sh --base=myt3site --extract-config > typo3scripts.conf
 }}}
 
+== `--extension` / `EXTENSION` ==
+Tells `extUpdate.sh` for what extension it should retrieve the latest version. If no extension is specified, it will list all extensions that have updates pending.
+{{{
+$ ./extUpdate.sh --extension=div2007
+}}}
+
+== `--changelog` / `DISPLAY_CHANGELOG` ==
+Tells `extUpdate.sh` to invoke ExtChangelogSh to retrieve upload comments for the pending updates.
+{{{
+$ ./extUpdate.sh --changelog
+}}}
+
 == `--hostname` / `HOST` ==
 The name of the host where the database for TYPO3 is running.
 
@@ -88,3 +100,48 @@ The password for the connection to the database for the TYPO3 installation. If n
 The name of the database for the TYPO3 installation. This parameter is currently unused.
 
 = Examples =
+
+== Installation ==
+{{{
+/var/www$ cd t3site/
+/var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/extUpdate.sh
+/var/www/t3site$ chmod 700 extUpdate.sh
+}}}
+
+== Checking for updates ==
+{{{
+/var/www/t3site$ ./extUpdate.sh
+Sourcing script configuration from typo3scripts.conf...Done.
+Checking dependencies...Succeeded.
+New version of 'direct_mail' available. Installed: 2.6.10 Latest: 2.7.0
+New version of 'div2007' available. Installed: 0.7.2 Latest: 0.8.1
+New version of 'kb_md5fepw' available. Installed: 0.4.0 Latest: 0.4.1
+}}}
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts. Please see the article about [Configuration] for more information.
+
+== Checking for updated (using `extChangelog.sh`) ==
+If ExtChangelogSh is also present in the same folder as `extUpdate.sh`, upload comments can be shown for pending updates:
+{{{
+/var/www/t3site$ ./extUpdate.sh --changelog
+Sourcing script configuration from typo3scripts.conf...Done.
+Checking dependencies...Succeeded.
+New version of 'direct_mail' available. Installed: 2.6.10 Latest: 2.7.0
+2.7.0 (2012-01-30 00:44:37)
+  - layout tweaking
+  - create draft newsletter and auto sending (e.g. weekly) (thanks to Benni Mack)
+  - bug fixes
+  please refer to changelog for further info.
+  please report any bug or feature or anything in Forge (forge.typo3.org)
+
+New version of 'div2007' available. Installed: 0.7.2 Latest: 0.8.1
+0.8.0 (2012-01-23 21:19:28)
+  add new classes for email and error message generation
+  ready for TYPO3 4.6
+0.8.1 (2012-01-28 18:10:45)
+  allow the usage of a pibase object instead of class.tx_div2007_alpha_language_base
+
+New version of 'kb_md5fepw' available. Installed: 0.4.0 Latest: 0.4.1
+0.4.1 (2010-10-27 21:04:19)
+  DEPRECATED: Use "saltedpasswords" and "rsaauth" extensions instead!
+}}}
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts. Please see the article about [Configuration] for more information.
