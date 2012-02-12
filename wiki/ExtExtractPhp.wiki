@@ -84,6 +84,20 @@ $ ./extExtract.php --base=myt3site --extract-config > typo3scripts.conf
 /var/www/t3site$ chmod 700 extExtract.php
 }}}
 
+== Determine local changes in extension ==
+Sometime it is desireable to compare the local version of an extension against the one that is publically available in the TYPO3 extension repository.  
+This can easily be achieved with `extExtract.php`:
+{{{
+/var/www/t3site$ ./extExtract.php --extension=news
+Sourcing script configuration from typo3scripts.conf...Done.
+Update checking isn't yet implemented for 'extExtract.php'.
+Retrieving original extension file for 'news' 1.3.1...Done.
+Extracting file 'news_1.3.1.t3x.temp'...Done.
+/var/www/t3site$ diff --recursive news_1.3.1.t3x.temp-extracted typo3/typo3conf/ext/news/
+Only in typo3/typo3conf/ext/news: ext_emconf.php
+}}}
+In this case, the file `ext_emconf.php` was manipulated. Further use of `diff` could identify the changes on a file level.
+
 = Known Issues =
 
 == Bad interpreter ==

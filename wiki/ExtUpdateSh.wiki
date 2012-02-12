@@ -145,3 +145,6 @@ New version of 'kb_md5fepw' available. Installed: 0.4.0 Latest: 0.4.1
   DEPRECATED: Use "saltedpasswords" and "rsaauth" extensions instead!
 }}}
 Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts. Please see the article about [Configuration] for more information.
+
+== Checking for local modifications ==
+If you have local modifications in an extension and you want to know what it was that you modified, you should use ExtExtractPhp and `diff`. There is an example on the wiki page for ExtExtractPhp.
