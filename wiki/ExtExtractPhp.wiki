@@ -90,7 +90,7 @@ This can easily be achieved with `extExtract.php`:
 {{{
 /var/www/t3site$ ./extExtract.php --extension=news
 Sourcing script configuration from typo3scripts.conf...Done.
-Update checking isn't yet implemented for 'extExtract.php'.
+Update checking is not yet implemented for 'extExtract.php'.
 Retrieving original extension file for 'news' 1.3.1...Done.
 Extracting file 'news_1.3.1.t3x.temp'...Done.
 /var/www/t3site$ diff --recursive news_1.3.1.t3x.temp-extracted typo3/typo3conf/ext/news/
