@@ -23,7 +23,10 @@ $ ./extUpdate.sh --export-config > typo3scripts.conf
 $ chmod 600 typo3scripts.conf
 }}}
 This would generate the configuration file `typo3scripts.conf`. Which is always the first *file* any script will try to read configuration items from.  
-If you want to manually create the configuration file, the correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers. In fact, `--export-config` just extracts that block from the script itself. Nevertheless, it is recommended to always use `--export-config`, as it may apply transformations to the configuration file format.  
+
+If you want to manually create the configuration file, the correct contents for that configuration file can always be taken from the scripts themselves. It is contained between the `# Script Configuration start` and `# Script Configuration end` markers.  
+In fact, `--export-config` just extracts that block from the script itself. Nevertheless, it is recommended to always use `--export-config`, as it may apply transformations to the configuration file format.  
+
 The configuration items in that file will contain the settings specific to `extUpdate.sh`, but all common, shared settings are contained there as well. So using the file should be without complications.  
 
 You should now adjust items in the base configuration, like the `BASE` path. The `BASE` path is the path, relative to the currently executed script, where TYPO3 is installed. By default, all typo3scripts will assume the `BASE` is a subfolder called `typo3`.
