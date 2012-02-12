@@ -75,6 +75,46 @@ In case you're using a non-default TYPO3 installation directory, make sure to su
 $ ./extExtract.php --base=myt3site --extract-config > typo3scripts.conf
 }}}
 
+== `--extension` / `EXTENSION` ==
+Tells `extExtract.php` what TYPO3 extension should be extracted.  
+If the given string is a filename, the file will be extracted.  
+If the given string is an extension key, the given extension will be downloaded from the TYPO3 extension repository. See `--force-version` regarding what version will be downloaded.
+{{{
+$ ./extExtract.php --extension=news
+}}}
+
+== `--force-version` / `FORCE_VERSION` ==
+Tells `extExtract.php` that the extension that should be retrieved, should be retrieved in a specific version. This obviously only makes sense when you're not trying to extract a local `.t3x` file.
+If no version is given with `--force-version`, the version of the installed extension is used.
+{{{
+$ ./extExtract.php --extension=news --force-version=1.2.3
+}}}
+
+== `--dump` / `DUMP` ==
+Renders the data structure contained in the extension file. When using `--dump`, the extension is not extracted to the disk unless `--extract` is also specified.
+{{{
+$ ./extExtract.php --extension=news --dump
+}}}
+
+== `--string-limit` / `STRING_LIMIT` ==
+String values in the extensions data structure will be summarized as `String[length]` if they are longer than this limit. The default is *60* characters. A limit of *0* means, no limit will be applied.
+A string value will always be summarized if it contains non-printable characters.
+{{{
+$ ./extExtract.php --extension=news --dump --string-limit=100
+}}}
+
+== `--extract` / `EXTRACT` ==
+When using `--dump` to print the data structure of an extension, `--extract` will ensure that the file contents are also extracted to disk.
+{{{
+$ ./extExtract.php --extension=news --dump --extract
+}}}
+
+== `--output-dir` / `OUTPUT_DIR` ==
+The location where the extension should be extracted to. By default the extension filename with `-extracted` added at the end is used as the name for the folder where the extension is extracted to.
+{{{
+$ ./extExtract.php --extension=news --output-dir=/tmp
+}}}
+
 = Examples =
 
 == Installation ==
