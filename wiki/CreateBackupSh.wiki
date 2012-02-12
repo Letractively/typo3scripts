@@ -85,17 +85,21 @@ The name of the database for the TYPO3 installation.
 
 = Examples =
 
-== Creating a snapshot ==
+== Installation ==
 {{{
 /var/www$ cd t3site/
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/createBackup.sh
 /var/www/t3site$ chmod 700 createBackup.sh
-/var/www/t3site$ ln -s typo3scripts.conf createBackup.conf
+}}}
+
+== Creating a snapshot ==
+{{{
 /var/www/t3site$ ./createBackup.sh
-Sourcing script configuration from createBackup.conf...Done.
-Creating TYPO3 backup 'typo3-2012-01-02-14-19.tgz'...
+Sourcing script configuration from typo3scripts.conf...Done.
+Checking dependencies...Succeeded.
+Creating TYPO3 backup 'typo3-2012-02-12-18-35.tgz'...
 Creating database dump at typo3/database.sql...Done.
 Compressing TYPO3 installation...Done.
 Deleting database dump...Done!
 }}}
-Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts. Please see the article about [Configuration] for more information.

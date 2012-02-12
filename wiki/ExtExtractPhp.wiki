@@ -77,6 +77,13 @@ $ ./extExtract.php --base=myt3site --extract-config > typo3scripts.conf
 
 = Examples =
 
+== Installation ==
+{{{
+/var/www$ cd t3site/
+/var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/extExtract.php
+/var/www/t3site$ chmod 700 extExtract.php
+}}}
+
 = Known Issues =
 
 == Bad interpreter ==

@@ -73,19 +73,24 @@ The version of TYPO3 we should switch to.
 
 = Examples =
 
-== Creating a snapshot ==
+== Installation ==
 {{{
 /var/www$ cd t3site/
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/switchVersion.sh
 /var/www/t3site$ chmod 700 switchVersion.sh
-/var/www/t3site$ ln -s typo3scripts.conf switchVersion.conf
-/var/www/t3site$ ./switchVersion.sh 4.5.8
-Sourcing script configuration from switchVersion.conf...Done.
-Looking for TYPO3 source package at typo3/typo3_src-4.5.8/...NOT found! Downloading.
-Downloading http://prdownloads.sourceforge.net/typo3/typo3_src-4.5.8.tar.gz...Done.
-Extracting source package typo3/typo3_src-4.5.8.tar.gz...Done.
-Switching TYPO3 source symlink to typo3/typo3_src-4.5.8/...Done.
-Deleting temp_CACHED_* files from typo3conf...Done!
-Version switched to 4.5.8.
 }}}
-Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts.
+
+== Creating a snapshot ==
+{{{
+/var/www/t3site$ ./switchVersion.sh 4.6.3
+Sourcing script configuration from typo3scripts.conf...Done.
+Checking dependencies...Succeeded.
+Looking for TYPO3 source package at typo3/typo3_src-4.6.3/...NOT found! Downloading.
+Downloading http://prdownloads.sourceforge.net/typo3/typo3_src-4.6.3.tar.gz...Done.
+Extracting source package typo3/typo3_src-4.6.3.tar.gz...Done.
+Switching TYPO3 source symlink to typo3/typo3_src-4.6.3/...Done.
+Checking if index.php needs to be updated...Done.
+Deleting temp_CACHED_* files from typo3conf...Done!
+Version switched to 4.6.3.
+}}}
+Please note, this example assumes that you previously created a configuration file `typo3scripts.conf` to share between scripts. Please see the article about [Configuration] for more information.

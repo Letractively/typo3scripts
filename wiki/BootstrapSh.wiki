@@ -130,14 +130,17 @@ The name of the database for the TYPO3 installation. This parameter is currently
 /var/www$ cd t3site/
 /var/www/t3site$ wget http://typo3scripts.googlecode.com/svn/trunk/bootstrap.sh
 /var/www/t3site$ chmod 700 bootstrap.sh
-/var/www/t3site$ sudo ./bootstrap.sh 4.6.1
-Looking for TYPO3 package at blankpackage-4.6.1.tar.gz...NOT found!
-Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.1.tar.gz...Done.
-Extracting TYPO3 package blankpackage-4.6.1.tar.gz...Done.
+/var/www/t3site$ sudo ./bootstrap.sh 4.6.4
+Checking dependencies...Succeeded.
+Looking for TYPO3 package at blankpackage-4.6.4.tar.gz...NOT found!
+Downloading http://prdownloads.sourceforge.net/typo3/blankpackage-4.6.4.tar.gz...Done.
+Extracting TYPO3 package blankpackage-4.6.4.tar.gz...Done.
 Moving TYPO3 package to typo3...Done.
 Generating localconf.php...Done.
-Adjusting access permissions for TYPO3 installation...Done.
 Enabling install tool...Done.
+Adjusting access permissions for TYPO3 installation...Done.
+
+Your TYPO3 Install Tool password is: 'df5798c18bad9901'
 }}}
 Creating a new installation is straight-forward. You simply retrieve the script, make it executable and pass the TYPO3 version you want to use as an argument.
 
@@ -145,3 +148,5 @@ By default, the installation will be created in a subfolder called `typo3`. This
 
 Additionally, `bootstrap.sh` accepts parameters related to the database TYPO3 should use. `bootstrap.sh` accepts these parameters for interoperability reasons with other scripts in this suite (which require a database connection). This allows you to construct a single configuration which all scripts can make use of.
 These parameters will be written to the TYPO3 `localconf.php` file (unless disabled via `--skip-db-config`).
+
+After completing the 1-2-3 setup wizard on your site, it may be desirable to extract the configuration entries into a configuration file for typo3scripts to use. That topic is discussed in the article about [Configuration].
