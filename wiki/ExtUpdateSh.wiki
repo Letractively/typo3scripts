@@ -1,0 +1,90 @@
+#summary extUpdate.sh - Determine update status of installed TYPO3 extensions.
+
+= Introduction =
+
+The main purpose of `extUpdate.sh` is to retrieve the version of the latest update for a given TYPO3 extension (or all TYPO3 extensions) and compare it to the version of the locally installed copy.  
+Optionally, if ExtChangelogSh is available as well, the upload comments for the pending updates can be displayed.
+
+= Arguments =
+{{{
+$ ./extUpdate.sh --help
+  Usage: ./extUpdate.sh [OPTIONS]
+
+  Core:
+  --help              Display this help and exit.
+  --update            Tries to update the script to the latest version.
+  --base=PATH         The name of the base path where Typo3 is
+                      installed. If no base is supplied, "typo3" is used.
+  --export-config     Prints the default configuration of this script.
+  --extract-config    Extracts configuration parameters from TYPO3.
+
+  Options:
+  --extension=EXTKEY  The extension key of the extension that should be
+                      operated on.
+  --changelog         Display the upload comments for updated extensions.
+
+  Database:
+  --hostname=HOST     The name of the host where the TYPO3 database is running.
+  --username=USER     The username to use when connecting to the TYPO3
+                      database.
+  --password=PASSWORD The password to use when connecting to the TYPO3
+                      database.
+  --database=DB       The name of the database in which TYPO3 is stored.
+
+}}}
+
+== Overview ==
+
+For general information regarding the configuration of scripts in the typo3scripts suite, please see the article about Configuration.
+
+== `--help` ==
+Prints the output seen above, giving an overview of available command line parameters.
+
+== `--update` ==
+Invokes the self-updating mechanism in this script. This will download the latest release version (from SVN trunk) from `code.google.com` and replace your current script.
+
+Please note, every time the script runs it will perform a quick check if a new version is available. If a new version is found online, the following message will be printed to the standard output:
+{{{
+NOTE: New version available!
+}}}
+
+== `--base` / `BASE` ==
+By default, TYPO3 installations will be created in a subfolder relative to the current working directory, named `typo3`. Use `--base` if the installation should be placed in a differently named subfolder.
+{{{
+$ ./extUpdate.sh --base=myt3site
+}}}
+
+== `--export-config` ==
+Print the default configuration of the script to the standard output.
+
+This allows for easy generation of a default config file, like so:
+{{{
+$ ./extUpdate.sh --export-config > typo3scripts.conf
+}}}
+
+== `--extract-config` ==
+Tries to read the database-related parameters out of the TYPO3 configuration file.
+
+This allows for easy generation of a base config file for other typo3scripts after you have completed your TYPO3 installation.
+{{{
+$ ./extUpdate.sh --extract-config > typo3scripts.conf
+}}}
+
+In case you're using a non-default TYPO3 installation directory, make sure to supply the `--base` parameter *before* the `--extract-config` parameter.
+{{{
+$ ./extUpdate.sh --base=myt3site --extract-config > typo3scripts.conf
+}}}
+
+== `--hostname` / `HOST` ==
+The name of the host where the database for TYPO3 is running.
+
+== `--username` / `USER` ==
+The username for the connection to the database for the TYPO3 installation.
+
+== `--password` / `PASS` ==
+The password for the connection to the database for the TYPO3 installation. If not defined, `bootstrap.sh` will try to initialize the password to a random 16 character string.
+
+== `--database` / `DB` ==
+The name of the database for the TYPO3 installation. This parameter is currently unused.
+
+= Examples =
